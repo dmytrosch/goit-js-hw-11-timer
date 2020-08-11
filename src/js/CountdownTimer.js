@@ -19,11 +19,14 @@ export default class CountdownTimer {
             secs: Math.floor((deltaTime % (1000 * 60)) / 1000),
         };
     }
+    transformTo2signs(time){
+       return time.toString().padStart(2, '0');
+    }
     createMarkUp() {
-        timerRefs.days.textContent = this.timeObj.days;
-        timerRefs.hours.textContent = this.timeObj.hours;
-        timerRefs.mins.textContent = this.timeObj.mins;
-        timerRefs.secs.textContent = this.timeObj.secs;
+        timerRefs.days.textContent = this.transformTo2signs(this.timeObj.days);
+        timerRefs.hours.textContent = this.transformTo2signs(this.timeObj.hours);
+        timerRefs.mins.textContent = this.transformTo2signs(this.timeObj.mins);
+        timerRefs.secs.textContent = this.transformTo2signs(this.timeObj.secs);
     }
     changeTime() {
         this.timeObj.secs--;
@@ -53,4 +56,5 @@ export default class CountdownTimer {
             this.changeTime();
         }, 1000);
     }
+    
 }
